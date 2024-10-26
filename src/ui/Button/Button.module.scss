@@ -1,127 +1,88 @@
-:root {
-  --primary-color: #4763e4;
-  --primary-hover: #3651b3;
-  --light-color: #5c73db;
-  --light-hover: rgba(92, 115, 219, 0.1);
-  --red-color: #dc2626;
-  --red-hover: darkred;
-  --border-radius: 10px;
-  --shadow-color: #d4d4d8;
-}
+$primary-color: #4763e4;
+$primary-hover: #3651b3;
+$light-color: #5c73db;
+$light-hover: rgba(92, 115, 219, 0.1);
+$red-color: #dc2626;
+$red-hover: darkred;
+$shadow-color: #a1a1a1;
 
-@mixin button-styles(
-  $bg-color,
-  $hover-color,
-  $padding: 16px,
-  $border: none,
-  $color,
-  $font-size,
-  $font-weight
-) {
-  width: 100%;
-  border-radius: var(--border-radius);
-  border: $border;
+@mixin buttons($padding-top, $padding-bottom, $padding-left, $padding-right) {
   display: flex;
   align-items: center;
-  background-color: $bg-color;
-  padding: $padding;
-  min-width: 81.5px;
-  cursor: pointer;
-  color: $color;
-  font-size: $font-size;
-  font-weight: $font-weight;
+  border-radius: 10px;
+  border: none;
+  text-align: start;
+  font-weight: 400;
+  background: transparent;
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+  padding-right: $padding-right;
+  padding-left: $padding-left;
+}
 
+@mixin action-button() {
+  @include buttons(0.781vh, 0.781vh, 0.556vw, 0.556vw);
+  min-width: 83px;
+  justify-content: center;
+  font-size: 0.833vw;
+}
+
+@mixin sideBarSectionButton() {
+  width: 100%;
+  font-size: 16px;
+  justify-content: space-between;
   &:hover {
-    background-color: $hover-color;
+    background-color: $primary-hover;
   }
 }
 
 .button {
-  &--sideBar-section-button {
-    @include button-styles(
-      transparent,
-      var(--primary-hover),
-      10px,
-      none,
-      white,
-      16px,
-      500
-    );
+  &--primary {
+    @include buttons(1.563vh, 1.563vh, 1.111vw, 1.111vw);
+    justify-content: center;
+    background-color: $primary-color;
+    &:hover {
+      background-color: $primary-hover;
+    }
   }
 
   &--sidebar-page-button {
-    @include button-styles(
-      transparent,
-      var(--primary-hover),
-      10px,
-      none,
-      white,
-      16px,
-      400
-    );
-    padding-left: 20%;
+    @include buttons(0.781vh, 0.781vh, 2.5vw, 2.5vw);
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    background: transparent;
+    &:hover {
+      background-color: $primary-hover;
+    }
   }
 
-  // &--primary {
-  //   @include button-styles(var(--primary-color), var(--primary-hover));
-  // }
-
-  // &--primary-light-shadow {
-  //   @include button-styles(
-  //     transparent,
-  //     black,
-  //     var(--shadow-color),
-  //     1px solid var(--shadow-color)
-  //   );
-  // }
-
-  // &--primary-light {
-  //   @include button-styles(
-  //     transparent,
-  //     var(--primary-color),
-  //     var(--shadow-color),
-  //     1px solid var(--primary-color)
-  //   );
-  // }
-
-  // &--actions-light {
-  //   @include button-styles(
-  //     transparent,
-  //     var(--primary-color),
-  //     var(--light-hover),
-  //     1px solid var(--primary-color)
-  //   );
-  // }
-
-  // &--actions-red {
-  //   @include button-styles(var(--red-color), var(--red-hover), none);
-  // }
-
-  // &--actions-blue {
-  //   @include button-styles(var(--primary-color), var(--primary-hover), none);
-  // }
-
-  // &--transparent-button {
-  //   @include button-styles(transparent, var(--primary-hover), none);
-  // }
-}
-
-@mixin button-text-style($size, $color, $weight) {
-  flex: 1; // Занимает всё доступное пространство
-  color: $color;
-  font-size: $size;
-  font-weight: $weight;
-  text-align: center; // Центрирование текста
-}
-
-.button__text {
-  &--utilisateurs {
-    @include button-text-style(16px, white, 400);
-    padding-left: 10%;
+  &--sideBar-section-button {
+    @include buttons(0.781vh, 0.781vh, 0.5vw, 0.5vw);
+    @include sideBarSectionButton();
   }
 
-  &--configuration {
-    @include button-text-style(16px, white, 500);
-    padding-left: 0;
+  &--sideBar-section-button-hidden {
+    @include buttons(0.781vh, 0.781vh, 0.5vw, 0.5vw);
+    @include sideBarSectionButton();
+    fill: $shadow-color;
+    color: $shadow-color;
+  }
+
+  &--actions-light {
+    @include action-button();
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    &:hover {
+      background-color: $light-hover;
+    }
+  }
+
+  &--actions-red {
+    @include action-button();
+    background: $red-color;
+    &:hover {
+      background-color: $red-hover;
+    }
   }
 }

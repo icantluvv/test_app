@@ -2,14 +2,19 @@ import { useNavigate } from "react-router-dom"
 import ButtonFabric from "../../ui/Button/ButtonFabric"
 
 const Configuration = [
-  "Utilisateurs",
-  "Base",
-  "Contrôle",
-  "Workflow",
-  "Alertes",
-  "Rôles",
-  "Préferences",
-  "Calendrier"
+  {
+    title: "Utilisateurs",
+    url: "Users"
+  },
+
+  {
+    title: "Base",
+    url: "Base"
+  },
+  {
+    title: "Contrôle",
+    url: "Control"
+  }
 ]
 
 const SectionFabric = ({ title }: SectionProps) => {
@@ -21,9 +26,9 @@ const SectionFabric = ({ title }: SectionProps) => {
         <li>
           <ButtonFabric
             type={"sidebar-page-button"}
-            onClick={() => navigate(`/${page}`)}
+            onClick={() => navigate(`/${page.url}`)}
           >
-            {page}
+            {page.title}
           </ButtonFabric>
         </li>
       ))

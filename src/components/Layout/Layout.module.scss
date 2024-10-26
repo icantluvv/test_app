@@ -1,5 +1,16 @@
-.container {
+.layout {
+  overflow: auto;
   width: 100vw;
   height: 100vh;
   display: flex;
+  color: black;
+
+  .layout__main {
+    overflow: auto;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }

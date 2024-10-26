@@ -1,0 +1,19 @@
+.input__container {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  .input__field {
+    color: black;
+    border: 1px solid #4763e4;
+    width: 100%;
+    padding-left: 3vw;
+    border-radius: 10px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .input__image {
+    position: absolute;
+    left: 1.3vw;
+  }
+}

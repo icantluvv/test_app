@@ -11,16 +11,21 @@ const Section = ({ title }: SectionProps) => {
   return (
     <>
       <ButtonFabric
-        type={"sideBar-section-button"}
+        type={`${show ? "sideBar-section-button" : "sideBar-section-button-hidden"}`}
         onClick={() => setShow(!show)}
       >
         <div className={styles.sidebar__topic}>
           <img src={configuration} alt="configuration" />
           {title}
+
           <img
             src={roll_down}
             alt="roll_down"
-            className={styles.sideBar__downArrow}
+            className={
+              show
+                ? styles.sideBar__downArrow
+                : styles.sideBar__downArrow__reverse
+            }
           />
         </div>
       </ButtonFabric>

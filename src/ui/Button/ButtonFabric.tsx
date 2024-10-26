@@ -10,10 +10,7 @@ interface ButtonFabricProps {
 
 const ButtonFabric = ({ type, onClick, children }: ButtonFabricProps) => {
   return (
-    <button
-      className={`${styles.button} ${styles[`button--${type}`]}`}
-      onClick={onClick}
-    >
+    <button className={`${styles[`button--${type}`]}`} onClick={onClick}>
       {children}
     </button>
   )

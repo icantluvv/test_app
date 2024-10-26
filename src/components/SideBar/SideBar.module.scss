@@ -2,7 +2,7 @@
 
 .sidebar {
   height: 100vh;
-  width: 17.778vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -31,8 +31,8 @@
     padding-top: 3vh;
     padding-bottom: 3vh;
     box-sizing: border-box;
-    padding-left: 1.389vw;
-    padding-right: 1.389vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
     z-index: 1000;
     width: 100%;
     height: 100%;
@@ -44,20 +44,25 @@
     );
 
     .sidebar__topic {
+      position: relative;
       display: flex;
       width: 100%;
-      height: 100%;
       align-items: center;
       gap: 1em;
 
-      .sideBar__downArrow {
+      @mixin sidebar_downArrow() {
         max-height: 0.84vh;
+        position: absolute;
+        right: 0;
       }
-    }
 
-    .sidebar__section {
-      width: 100%;
-      height: auto;
+      .sideBar__downArrow {
+        @include sidebar_downArrow();
+      }
+      .sideBar__downArrow__reverse {
+        @include sidebar_downArrow();
+        transform: rotate(180deg);
+      }
     }
   }
 }
